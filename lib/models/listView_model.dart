@@ -1,14 +1,11 @@
-import 'package:flutter/material.dart';
+class ListItem {
+  bool isStarred;
+  String userName;
+  String message;
 
-class listViewModel extends StatelessWidget {
-  const listViewModel({super.key});
-
-  @override
-  Widget 
-  build(BuildContext context) {
-    bool isStarred = false;
-  String title = "Name";
-  String subtitle = "This is a sample message from user.";  
-    return const Placeholder();
-  }
+  ListItem({
+    required this.isStarred,
+    required this.userName,
+    required this.message,
+  });
 }

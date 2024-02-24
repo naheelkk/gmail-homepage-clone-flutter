@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tgh_gmail_clone/models/listView_model.dart';
+// import 'package:tgh_gmail_clone/models/listView_model.dart';
 import 'package:tgh_gmail_clone/widgets/bottom_nav.dart';
 import 'package:tgh_gmail_clone/widgets/drawer.dart';
 
@@ -11,17 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool isStarred = false;
-  // late List _listItems;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _listItems = List.generate(
-  //     15,
-  //     (index) => (isStarred: false),
-  //   );
-  // }
-
+List<ListItem> items = List.generate(15, (index) => 
+ListItem(
+  isStarred: false,
+   userName: 'User $index',
+    message: 'This is a sample message from user $index.'
+    ),
+    );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: MenuDrawer(),
       body: ListView.builder(
-        itemCount: 15,
+        itemCount: items.length,
         padding: EdgeInsets.all(10),
         itemBuilder: (context, index) {
+          ListItem item = items[index];
           return ListTile(
             leading: CircleAvatar(
               backgroundImage:
                   NetworkImage('https://picsum.photos/250?image=9'),
             ),
-            title: Text('User $index',
+            title: Text(item.userName,
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                 )),
             subtitle: Text(
-              'This is a sample message from user $index.',
+              item.message,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
@@ -57,10 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
             trailing: IconButton(
               onPressed: () {
                 setState(() {
-                isStarred = !isStarred;
+                item.isStarred = !item.isStarred;
                 });
               },
-              icon: isStarred
+              icon: item.isStarred
                   ? Icon(
                       Icons.star,
                       color: Colors.yellow,
