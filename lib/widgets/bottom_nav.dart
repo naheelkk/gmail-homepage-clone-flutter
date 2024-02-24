@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tgh_gmail_clone/screens/home_screen.dart';
-import 'package:tgh_gmail_clone/screens/meet.dart';
+import 'package:tgh_gmail_clone/screens/meetPage.dart';
 
 class bottomNavigationBar extends StatefulWidget {
   const bottomNavigationBar({super.key});
@@ -16,7 +16,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Mail'),
-        BottomNavigationBarItem(icon: Icon(Icons.meeting_room), label: 'Meet'),
+        BottomNavigationBarItem(icon: Icon(Icons.video_camera_back_outlined), label: 'Meet'),
       ],
       onTap: (value) => onItemTapped(context, value),
       );

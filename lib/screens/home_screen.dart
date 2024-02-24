@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tgh_gmail_clone/models/listView_model.dart';
 import 'package:tgh_gmail_clone/widgets/bottom_nav.dart';
+import 'package:tgh_gmail_clone/widgets/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,14 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
           hintText: 'Search mail',
           trailing: Iterable.generate(
               1, (index) => Icon(Icons.account_circle_outlined)).toList(),
-          leading: GestureDetector(
-            child: Icon(Icons.menu),
-            onTap: () {
-              print('hi');
-            },
-          ),
-        ),
+        ), 
       ),
+      drawer: MenuDrawer(),
       body: ListView.builder(
         itemCount: 15,
         padding: EdgeInsets.all(10),
@@ -48,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundImage:
                   NetworkImage('https://picsum.photos/250?image=9'),
             ),
-            title: Text(' $index',
+            title: Text('User $index',
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                 )),
